@@ -1,28 +1,23 @@
 package com.backend.xworld.model;
 
-
-import com.google.firebase.database.annotations.NotNull;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
-@Entity
+@Component
 public class User {
 
-    @NotNull
-    private String password;
 
     private String firstName;
 
     private String lastName;
 
-    private String phone;
+    private String password;
 
-    @NotNull
     private String email;
 
-    /**
-     * Default constructor
-     */
+    private String role;
+
     public User() { }
 
     /**
@@ -44,7 +39,7 @@ public class User {
      * @param firstName
      * @param lastName
      */
-    public User( String password, String email, String firstName, String lastName) {
+    public User(String firstName, String lastName, String email, String password) {
         this(email, firstName, lastName);
         this.password = password;
     }
@@ -53,14 +48,6 @@ public class User {
     ///////////////////////////////
     ////  Getter & Setter
 
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -78,12 +65,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {
@@ -94,14 +81,11 @@ public class User {
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + "*********" + '\'' +
-                '}';
+    public String getRole() {
+        return role;
     }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
 }

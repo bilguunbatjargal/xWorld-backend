@@ -1,4 +1,4 @@
-package com.backend.xworld.service.init;
+package com.backend.xworld.service;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
@@ -16,7 +16,6 @@ public class FirebaseServiceInit {
     @PostConstruct
     public void initialize() {
         try{
-
             FileInputStream serviceAccount = new FileInputStream("./firebaseService.json");
 
             FirebaseOptions options = new FirebaseOptions.Builder()
