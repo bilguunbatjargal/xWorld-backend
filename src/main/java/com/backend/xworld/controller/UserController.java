@@ -7,9 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.ExecutionException;
 
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@CrossOrigin(origins = "*")
 public class UserController {
 
     @Autowired
@@ -19,9 +18,10 @@ public class UserController {
     public User getUser(@RequestHeader() String email) throws ExecutionException, InterruptedException {
         return firebaseService.getUserDetails(email);
     }
-    @CrossOrigin
-    @PostMapping("/createUser")
+
+    @PostMapping("/signup")
     public String createUser(@RequestBody User user) throws ExecutionException, InterruptedException {
+        System.out.println(user.toString());
         return firebaseService.saveUserDetails(user);
     }
 
